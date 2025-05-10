@@ -139,4 +139,4 @@ Now you should be able to:
 * Click the "Show Patients" button. This will fetch the registered patient data from the backend server and display it in a table on the page.
 =======
 * Click the "Show Patients" button. This will fetch the registered patient data from the backend server and display it in a table on the page.
->>>>>>> efc25fe (Add entire patient registration app project)
+
