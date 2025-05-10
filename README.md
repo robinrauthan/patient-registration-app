@@ -135,8 +135,6 @@ The `server.js` file sets up a backend server using Express.js and the `@electri
 Now you should be able to:
 
 * Fill out the registration form and click "Register". This will send the data to the backend server, which will store it in the local `patients.db` database.
-<<<<<<< HEAD
 * Click the "Show Patients" button. This will fetch the registered patient data from the backend server and display it in a table on the page.
-=======
 * Click the "Show Patients" button. This will fetch the registered patient data from the backend server and display it in a table on the page.
 
