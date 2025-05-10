@@ -11,7 +11,7 @@ A simple web application for registering and displaying patient information.
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/robinrauthan/patient-registration-app]
+    git clone [[https://github.com/robinrauthan/patient-registration-app](https://github.com/robinrauthan/patient-registration-app.git)]
     cd patient-registration-app
     ```
 2.  **Navigate to the backend directory:**
