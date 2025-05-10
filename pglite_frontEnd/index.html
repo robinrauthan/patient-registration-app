@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration App (Frontend Only)</title>
+    <style>
+        /* styling */
+        #patients-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        #patients-table th, #patients-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        #patients-table th {
+            background-color: #f0f0f0;
+        }
+        #patients-table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .sql-container {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .sql-container textarea {
+            width: 98%;
+            min-height: 80px;
+            margin-bottom: 10px;
+            padding: 8px;
+            box-sizing: border-box;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .sql-container button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+        #sql-results {
+            margin-top: 10px;
+            border: 1px solid #eee;
+            padding: 10px;
+            border-radius: 3px;
+            background-color: #f9f9f9;
+            font-size: 14px;
+            white-space: pre-wrap; /* Preserve formatting */
+            font-family: monospace;
+        }
+    </style>
+    <script type="module" src="script.js"></script>
+    <script src="utils.js"></script>
+    <!-- <script type="importmap">
+      {
+        "imports": {
+          "@electric-sql/pglite": "../dist/index.js"
+        }
+      }
+    </script> -->
+</head>
+<body>
+    <div class="container">
+        <div class="image-heading">
+            <img src="/home/robin/patientRApp/image.png" alt="logo">
+            <h2>Patient Registration App (Frontend Only)</h2>
+        </div>
+
+        <div class="form-container">
+            <form id="registration-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required><br><br>
+
+                <label for="dateOfBirth">Date of Birth:</label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" required><br><br>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br><br>
+
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+    <div id="patients-list">
+        <h2>Registered Patients</h2>
+        </div>
+
+    <div class="sql-container">
+        <h2>Execute Raw SQL</h2>
+        <textarea id="sql-query" placeholder="Enter SQL query (e.g., SELECT * FROM patients);"></textarea>
+        <button onclick="executeSqlQuery()">Execute</button>
+        <div id="sql-results"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

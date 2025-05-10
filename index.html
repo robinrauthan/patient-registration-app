@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="section form-container">
+            <div class="image-heading">
+                <img src="image.png" alt="logo">
+                <h2>Patient Registration</h2>
+            </div>
+
+            <form id="registration-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="dateOfBirth">Date of Birth:</label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <div class="form-actions">
+                    <input type="submit" value="Register">
+                    <button type="button" onclick="loadPatients()">Show Patients</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="section table-container">
+           <h4>Registered Patients</h4>
+            <div id="patients-list"></div>
+        </div>
+    </div>
+
+    <script>
+        async function handleRegistration(event) {
+            event.preventDefault();
+
+            const patientData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                dateOfBirth: document.getElementById('dateOfBirth').value,
+                gender: document.getElementById('gender').value
+            };
+
+            try {
+                const response = await fetch('http://localhost:3000/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(patientData)
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert("Patient registered successfully!");
+                    document.getElementById('registration-form').reset();
+                    loadPatients();
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            } catch (error) {
+                alert('Network error: Could not connect to the server.');
+            }
+        }
+
+        async function loadPatients() {
+            try {
+                const response = await fetch('http://localhost:3000/api/patients');
+                const patients = await response.json();
+                displayPatients(patients);
+            } catch (error) {
+                alert('Network error: Could not connect to the server.');
+            }
+        }
+
+        function displayPatients(patients) {
+            const container = document.getElementById('patients-list');
+            container.innerHTML = '';
+
+            if (patients.length === 0) {
+                container.textContent = 'No patients found.';
+                return;
+            }
+
+            const table = document.createElement('table');
+            table.innerHTML = `
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                </tr>
+            `;
+
+            patients.forEach(patient => {
+                const row = table.insertRow();
+                row.innerHTML = `
+                    <td>${patient.name}</td>
+                    <td>${patient.email}</td>
+                    <td>${patient.phone}</td>
+                    <td>${patient.dateOfBirth}</td>
+                    <td>${patient.gender}</td>
+                `;
+            });
+
+            container.appendChild(table);
+        }
+
+        document.getElementById('registration-form').addEventListener('submit', handleRegistration);
+    </script>
+</body>
+</html>
