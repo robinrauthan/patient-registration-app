@@ -31,7 +31,7 @@ A simple web application for registering and displaying patient information.
 
 **2️⃣ Set Up a Basic Web Page with Registration Form (index.html)**
 
-📌 **Inferred Commit Message:** `Initial HTML structure with patient registration form`
+📌 **Commit Message:** `Initial HTML structure with patient registration form`
 
 The `index.html` file sets up the basic structure of the web page. It includes:
 
@@ -52,7 +52,7 @@ The `index.html` file sets up the basic structure of the web page. It includes:
 
 **3️⃣ Styling the App (style.css)**
 
-📌 **Inferred Commit Message:** `Basic CSS styling for layout and appearance`
+📌 **Commit Message:** `Basic CSS styling for layout and appearance`
 
 The `style.css` file (though not provided, it's linked in the `<head>`) is responsible for the visual presentation of the web page. It likely includes styles for:
 
@@ -68,7 +68,7 @@ The `style.css` file (though not provided, it's linked in the `<head>`) is respo
 
 **4️⃣ Handling Patient Registration (index.html & JavaScript)**
 
-📌 **Inferred Commit Message:** `Implemented frontend registration submission`
+📌 **Commit Message:** `Implemented frontend registration submission`
 
 The JavaScript code within the `<script>` tags in `index.html` handles the submission of the registration form:
 
@@ -86,7 +86,7 @@ The JavaScript code within the `<script>` tags in `index.html` handles the submi
 
 **5️⃣ Saving Patient Data in the Database (server.js)**
 
-📌 **Inferred Commit Message:** `Added backend logic to register patients and store in PGlite`
+📌 **Commit Message:** `Added backend logic to register patients and store in PGlite`
 
 The `server.js` file sets up a backend server using Express.js and the `@electric-sql/pglite` library to manage patient data:
 
@@ -107,7 +107,7 @@ The `server.js` file sets up a backend server using Express.js and the `@electri
 
 **6️⃣ Fetching Registered Patients (server.js & JavaScript)**
 
-📌 **Inferred Commit Message:** `Implemented backend patient retrieval and frontend display`
+📌 **Commit Message:** `Implemented backend patient retrieval and frontend display`
 
 * **Backend (`server.js`):**
     * The `/api/patients` GET endpoint handles fetching all registered patients:
